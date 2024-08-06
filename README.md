@@ -24,8 +24,13 @@ Paradigmas:
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 211031664  |  Catlen Cleane Ferreira de Oliveira |
+| 202023681  |  Gabriel da Silva Rosa |
+| 212008197  |  João Pedro Alves Machado |
+| 190032821  |  Lorenzo Santos |
+| 211043718  |  Paulo Victor Fonseca Sousa |
+| 190020521  |  Valderson Pontes da Silva Junior |
+| 190038900  |  Victor de Souza Cabral |
 
 ## Sobre 
 Descreva o seu projeto em linhas gerais. 
