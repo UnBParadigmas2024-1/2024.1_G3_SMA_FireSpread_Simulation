@@ -1,51 +1,47 @@
 from mesa import Agent, Model
 from mesa.space import MultiGrid
 from mesa.time import RandomActivation
+import random
 
-from mesa import Agent
 
-class FixedPositionAgent(Agent):
-    def __init__(self, unique_id, model):
+class StaticAgent(Agent):
+    def __init__(self, unique_id, model, x, y):
         super().__init__(unique_id, model)
-        # Inicializa a posição
-        self.x, self.y = None, None  # Valores temporários até o agente ser colocado na grid
+        self.x = x
+        self.y = y
+        self.state = 'green'
+        self.red_steps = 0    # Contador de passos em que o agente está vermelho
 
     def step(self):
-        # Se a posição ainda não foi inicializada, inicializa com a posição atual
-        if self.x is None or self.y is None:
-            self.x, self.y = self.pos
+        if self.state == 'red':
+            self.red_steps += 1
+            # Se o agente estiver vermelho por mais de dois passos, muda para cinza
+            if self.red_steps > 20:
+                self.state = 'gray'
+        if self.state == 'green':
+            neighbors = self.model.grid.get_neighbors((self.x, self.y), moore=True, include_center=False)
+            red_neighbors = sum(1 for neighbor in neighbors if neighbor.state == 'red')
+            
+            # Ajusta a probabilidade de mudar para vermelho
+            prob = 0.003 * (2 ** red_neighbors)  # Dobra a chance para cada vizinho vermelho
+            if random.random() < prob:
+                self.state = 'red'
+                self.red_steps = 1  # Reinicia o contador quando muda para vermelho
 
-        # Verifica se o agente está na última coluna
-        if self.x == self.model.grid.width - 1:
-            # Move para a próxima linha
-            new_x = 0
-            new_y = self.y + 1
-        else:
-            # Move para a direita na mesma linha
-            new_x = self.x + 1
-            new_y = self.y
-        # Remove o agente da posição atual
-        self.model.grid.remove_agent(self)
-
-        # Atualiza a posição do agente
-        self.x, self.y = new_x, new_y
-        self.pos = (self.x, self.y)
-
-        # Coloca o agente na nova posição
-        self.model.grid.place_agent(self, (self.x, self.y))
-
-        # Imprime a nova posição
-        print(f"Nova posição: ({self.x}, {self.y})")
-
-class ModeloEmBranco(Model):
+class Modelo(Model):
     def __init__(self, width, height):
         self.grid = MultiGrid(width, height, True)
         self.schedule = RandomActivation(self)
-        
-        # Criar um agente e colocá-lo na posição fixa (4, 4)
-        agent = FixedPositionAgent(1, self)
-        self.schedule.add(agent)
-        self.grid.place_agent(agent, (0, 0))
+
+        # Preencher a grid com agentes estáticos
+        agent_id = 0
+        for x in range(width):
+            for y in range(height):
+                # Cria um novo agente estático em cada posição (x, y)
+                agent = StaticAgent(agent_id, self, x, y)
+                self.schedule.add(agent)
+                self.grid.place_agent(agent, (x, y))
+                agent_id += 1
 
     def step(self):
         self.schedule.step()
