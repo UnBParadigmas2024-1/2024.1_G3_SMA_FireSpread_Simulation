@@ -11,7 +11,7 @@ class Modelo(Model):
         agent_id = 0
         for x in range(width):
             for y in range(height):
-                initial_fire = (x == 0 and y == 0)
+                initial_fire = (x == 0)
                 agent = StaticAgent(agent_id, self, x, y, initial_fire)
                 self.schedule.add(agent)
                 self.grid.place_agent(agent, (x, y))
