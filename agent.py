@@ -14,11 +14,8 @@ class StaticAgent(Agent):
             self.red_steps += 1
             if self.red_steps > 20:
                 self.state = 'gray'
-        if self.state == 'green':
+        elif self.state == 'green':
             neighbors = self.model.grid.get_neighbors((self.x, self.y), moore=True, include_center=False)
-            red_neighbors = sum(1 for neighbor in neighbors if neighbor.state == 'red')
-            
-            prob = 0.003 * (2 ** red_neighbors)
-            if random.random() < prob:
-                self.state = 'red'
+            if any(neighbor.state == 'red' for neighbor in neighbors):
                 self.red_steps = 1
+                self.state = 'red'
