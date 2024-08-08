@@ -1,30 +1,7 @@
-from mesa import Agent, Model
+from mesa import Model
 from mesa.space import MultiGrid
 from mesa.time import RandomActivation
-import random
-
-
-class StaticAgent(Agent):
-    def __init__(self, unique_id, model, x, y):
-        super().__init__(unique_id, model)
-        self.x = x
-        self.y = y
-        self.state = 'green'
-        self.red_steps = 0    
-
-    def step(self):
-        if self.state == 'red':
-            self.red_steps += 1
-            if self.red_steps > 20:
-                self.state = 'gray'
-        if self.state == 'green':
-            neighbors = self.model.grid.get_neighbors((self.x, self.y), moore=True, include_center=False)
-            red_neighbors = sum(1 for neighbor in neighbors if neighbor.state == 'red')
-            
-            prob = 0.003 * (2 ** red_neighbors)
-            if random.random() < prob:
-                self.state = 'red'
-                self.red_steps = 1
+from agent import StaticAgent  # Importa a classe StaticAgent do arquivo agent.py
 
 class Modelo(Model):
     def __init__(self, width, height):
@@ -34,7 +11,8 @@ class Modelo(Model):
         agent_id = 0
         for x in range(width):
             for y in range(height):
-                agent = StaticAgent(agent_id, self, x, y)
+                initial_fire = (x == 0 and y == 0)
+                agent = StaticAgent(agent_id, self, x, y, initial_fire)
                 self.schedule.add(agent)
                 self.grid.place_agent(agent, (x, y))
                 agent_id += 1
