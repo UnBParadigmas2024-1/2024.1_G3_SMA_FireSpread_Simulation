@@ -19,5 +19,16 @@ class Modelo(Model):
                 self.grid.place_agent(agent, (x, y))
                 agent_id += 1
 
+        self.updates = []
+
     def step(self):
+        self.updates = []
         self.schedule.step()
+        self.apply_updates()
+
+    def apply_updates(self):
+        for (x, y) in self.updates:
+            agent = self.grid.get_cell_list_contents([(x, y)])[0]
+            if agent.state == 'green':
+                agent.state = 'red'
+                agent.red_steps = 1

@@ -17,5 +17,4 @@ class StaticAgent(Agent):
         elif self.state == 'green':
             neighbors = self.model.grid.get_neighbors((self.x, self.y), moore=True, include_center=False)
             if any(neighbor.state == 'red' for neighbor in neighbors):
-                self.red_steps = 1
-                self.state = 'red'
+                self.model.updates.append((self.x, self.y))
