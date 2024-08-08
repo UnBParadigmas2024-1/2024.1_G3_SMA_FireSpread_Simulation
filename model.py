@@ -1,16 +1,18 @@
 from mesa import Model
 from mesa.space import MultiGrid
 from mesa.time import RandomActivation
-from agent import StaticAgent  # Importa a classe StaticAgent do arquivo agent.py
+from agent import StaticAgent
 
 class Modelo(Model):
-    def __init__(self, width, height):
+    def __init__(self, width, height, density):
         self.grid = MultiGrid(width, height, True)
         self.schedule = RandomActivation(self)
+        self.density = density
 
         agent_id = 0
-        for x in range(width):
-            for y in range(height):
+        for (agents, coordinates) in self.grid.coord_iter():
+            x, y = coordinates
+            if self.random.random() < density:
                 initial_fire = (x == 0)
                 agent = StaticAgent(agent_id, self, x, y, initial_fire)
                 self.schedule.add(agent)

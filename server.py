@@ -16,11 +16,12 @@ def agent_portrayal(agent):
 
 grid = CanvasGrid(agent_portrayal, 20, 20, 500, 500)
 
-model_params = {
+grid_params = {
     "width": 20,
-    "height": 20
+    "height": 20,
+    "density": Slider("Densidade", 0.5, 0.1, 1.0, 0.1)
 }
 
-server = ModularServer(Modelo, [grid], "Simulação de Grid com Agente semifixo", model_params)
+server = ModularServer(Modelo, [grid], "Simulação de Grid com Agente semifixo", grid_params)
 server.port = 8080
 server.launch()
