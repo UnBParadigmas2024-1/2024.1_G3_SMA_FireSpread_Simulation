@@ -2,6 +2,7 @@ from mesa import Model
 from mesa.space import MultiGrid
 from mesa.time import RandomActivation
 from agent import StaticAgent
+import random
 
 class Modelo(Model):
     def __init__(self, width, height, density):
@@ -11,13 +12,15 @@ class Modelo(Model):
         self.density = density
 
         agent_id = 0
+        tipos_vegetacao = ['grama', 'arbusto', 'árvore', 'terreno_úmido']
         # Itera sobre todas as coordenadas na grade
         for (agents, coordinates) in self.grid.coord_iter():
             x, y = coordinates
             # Adiciona agentes com base na densidade fornecida
             if self.random.random() < density:
                 initial_fire = (y == 99)  # Incendio inicial na ultima linha de y
-                agent = StaticAgent(agent_id, self, x, y, initial_fire)
+                tipo_vegetacao = random.choice(tipos_vegetacao)
+                agent = StaticAgent(agent_id, self, x, y, tipo_vegetacao, initial_fire)
                 self.schedule.add(agent)
                 self.grid.place_agent(agent, (x, y))
                 agent_id += 1
