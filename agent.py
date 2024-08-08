@@ -6,21 +6,26 @@ class StaticAgent(Agent):
         super().__init__(unique_id, model)
         self.x = x
         self.y = y
+        # Define o estado inicial do agente
         self.state = 'red' if initial_fire else 'green'
-        self.red_steps = 0    
+        # Contador de passos de red
+        self.red_steps = 0
 
     def step(self):
+        # Se o agente estiver em chamas (red), aumenta o contador de passos
         if self.state == 'red':
             self.red_steps += 1
+            # Apos 20 passos, o estado do agente muda para queimado (gray)
             if self.red_steps > 20:
                 self.state = 'gray'
         elif self.state == 'green':
+            # Se o agente estiver verde, verifica os vizinhos
             neighbors = self.model.grid.get_neighbors((self.x, self.y), moore=True, include_center=False)
             for neighbor in neighbors:
                 dx = abs(neighbor.pos[0] - self.x)
                 dy = abs(neighbor.pos[1] - self.y)
                 
-                # Determina o tipo de adjacencia do vizinho
+                # Determina o tipo de adjacencia do vizinho.
                 if (dx == 1 and dy == 0) or (dx == 0 and dy == 1):  # Adjacente ortogonalmente
                     ignition_probability = 1.0
                 elif dx == 1 and dy == 1:  # Adjacente diagonalmente
