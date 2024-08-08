@@ -5,7 +5,7 @@ from agent import StaticAgent
 
 class Modelo(Model):
     def __init__(self, width, height, density):
-        self.grid = MultiGrid(width, height, True)
+        self.grid = MultiGrid(width, height, torus=False)
         self.schedule = RandomActivation(self)
         self.density = density
 
