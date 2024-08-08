@@ -4,16 +4,33 @@ from mesa.visualization.UserParam import Slider
 from model import Modelo
 
 def agent_portrayal(agent):
-    # Define a aparencia do agente na visualização
+    # Defina as cores baseadas no tipo de vegetação
+    color_map = {
+        'grama': 'lightgreen',
+        'arbusto': 'darkgreen',
+        'árvore': 'brown',
+        'terreno_úmido': 'blue'
+    }
+
+    # Determine a cor do agente baseado no seu estado atual
+    if agent.state == 'red':
+        color = 'red'
+    elif agent.state == 'gray':
+        color = 'gray'
+    else:
+        color = color_map[agent.vegetation_type]
+
+    # Define a aparência do agente na visualização
     portrayal = {
         "Shape": "rect",
         "Filled": True,
-        "Color": agent.state,
+        "Color": color,
         "Layer": 0,
         "w": 1,
         "h": 1
     }
     return portrayal
+
 
 # Configura a grade de visualizacao
 grid = CanvasGrid(agent_portrayal, 100, 100, 500, 500)

@@ -18,7 +18,7 @@ class StaticAgent(Agent):
             'árvore': 0.6,
             'terreno_úmido': 0.3
         }
-
+ 
     def step(self):
         # Se o agente estiver em chamas (red), aumenta o contador de passos
         if self.state == 'red':
