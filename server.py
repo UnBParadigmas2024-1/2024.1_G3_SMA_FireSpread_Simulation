@@ -14,11 +14,11 @@ def agent_portrayal(agent):
     }
     return portrayal
 
-grid = CanvasGrid(agent_portrayal, 20, 20, 500, 500)
+grid = CanvasGrid(agent_portrayal, 100, 100, 500, 500)
 
 grid_params = {
-    "width": 20,
-    "height": 20,
+    "width": 100,
+    "height": 100,
     "density": Slider("Densidade", 0.5, 0.1, 1.0, 0.1)
 }
 
