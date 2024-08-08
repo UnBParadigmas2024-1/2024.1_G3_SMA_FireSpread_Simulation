@@ -13,7 +13,7 @@ class Modelo(Model):
         for (agents, coordinates) in self.grid.coord_iter():
             x, y = coordinates
             if self.random.random() < density:
-                initial_fire = (x == 0)
+                initial_fire = (y == 99)
                 agent = StaticAgent(agent_id, self, x, y, initial_fire)
                 self.schedule.add(agent)
                 self.grid.place_agent(agent, (x, y))
