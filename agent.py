@@ -39,7 +39,7 @@ class StaticAgent(Agent):
 
 # Novo agente dinâmico que será capaz de se mover e apagar o fogo
 class DynamicAgent(Agent):
-    def __init__(self, unique_id, model, x, y, fire_extinguish_prob=0.5):
+    def __init__(self, unique_id, model, x, y, fire_extinguish_prob=1):
         super().__init__(unique_id, model)
         self.x = x
         self.y = y
@@ -58,13 +58,23 @@ class DynamicAgent(Agent):
             self.x, self.y = new_position
 
     def extinguish_fire(self):
-        # Verifica se a célula atual ou células adjacentes têm fogo
-        neighbors = self.model.grid.get_neighbors((self.x, self.y), moore=True, include_center=True)
-        for neighbor in neighbors:
-            if isinstance(neighbor, StaticAgent) and neighbor.state == 'red':
-                if random.random() < self.fire_extinguish_prob:
-                    neighbor.state = 'green'  # Apaga o fogo, voltando para o estado verde
+        # Define o raio de alcance do agente para apagar fogo
+        radius = 1  # Raio incorreto de apenas 1 bloco
+        for dx in range(-radius, radius + 1):
+            for dy in range(-radius, radius + 1):
+                # Calcula a posição do vizinho dentro do raio
+                nx, ny = self.x + dx, self.y + dy
+                # Verifica se a posição está dentro dos limites da grade
+                if 0 <= nx < self.model.grid.width and 0 <= ny < self.model.grid.height:
+                    cell_contents = self.model.grid.get_cell_list_contents([(nx, ny)])
+                    for agent in cell_contents:
+                        if isinstance(agent, StaticAgent) and agent.state == 'red':
+                            # Tenta apagar o fogo com base na probabilidade de extinção
+                            if random.random() < self.fire_extinguish_prob:
+                                agent.state = 'green'  # Apaga o fogo, voltando para o estado verde
+                                agent.red_steps = 0  # Reseta o contador de passos em chamas
 
     def step(self):
         self.move()
         self.extinguish_fire()
+
