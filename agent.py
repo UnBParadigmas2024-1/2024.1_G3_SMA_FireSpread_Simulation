@@ -37,7 +37,6 @@ class StaticAgent(Agent):
                     self.model.updates.append((self.x, self.y))
                     break
 
-# Novo agente dinâmico que será capaz de se mover e apagar o fogo
 class DynamicAgent(Agent):
     def __init__(self, unique_id, model, x, y, fire_extinguish_prob=1):
         super().__init__(unique_id, model)
@@ -59,7 +58,7 @@ class DynamicAgent(Agent):
 
     def extinguish_fire(self):
         # Define o raio de alcance do agente para apagar fogo
-        radius = 1  # Raio incorreto de apenas 1 bloco
+        radius = 3
         for dx in range(-radius, radius + 1):
             for dy in range(-radius, radius + 1):
                 # Calcula a posição do vizinho dentro do raio
@@ -77,4 +76,3 @@ class DynamicAgent(Agent):
     def step(self):
         self.move()
         self.extinguish_fire()
-
