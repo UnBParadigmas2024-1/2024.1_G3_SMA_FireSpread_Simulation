@@ -43,7 +43,7 @@ grid_params = {
     "width": 100,
     "height": 100,
     "density": Slider("Densidade", 0.5, 0.1, 1.0, 0.1),
-    "num_dynamic_agents": Slider("Número de Agentes Dinâmicos", 1000, 0, 1000, 1)
+    "num_dynamic_agents": Slider("Número de Bombeiros", 500, 0, 500, 1)
 }
 
 # Cria o servidor da simulação, vinculando o modelo e a grade de visualização
