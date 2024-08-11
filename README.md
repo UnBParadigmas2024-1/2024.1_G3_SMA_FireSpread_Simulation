@@ -54,7 +54,7 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-| Catlen Cleane Ferreira de Oliveira  |   |  |
+| Catlen Cleane Ferreira de Oliveira  |Programação dos tipos de matas e a probabilidade de ignição|Boa|
 | Gabriel da Silva Rosa  |  Programação dos tipos de matas e a probabilidade de ignição | Boa |
 | João Pedro Alves Machado  |  |  |
 | Lorenzo Santos  | |  |
