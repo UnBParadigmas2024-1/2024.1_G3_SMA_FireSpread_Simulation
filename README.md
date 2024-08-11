@@ -60,7 +60,7 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Lorenzo Santos  | |  |
 | Paulo Victor Fonseca Sousa  |  |  |
 | Valderson Pontes da Silva Junior  |   |  |
-| Victor de Souza Cabral  |   |  |
+| Victor de Souza Cabral  | Simulação da propagação do fogo na floresta, iniciando o fogo em agentes específicos, lógica de dispersão do fogo, criando controle de densidade e probabilidade de ignição entre elementos adjacentes.  |  |
 
 ## Outros 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
