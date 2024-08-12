@@ -27,7 +27,7 @@ Funcionalidades principais:
 
 **Propagação do fogo:** O fogo se propaga entre as células adjacentes, dependendo da densidade da vegetação e do tipo de vegetação.
 
-**Tipos de vegetação:** O ambiente contém diferentes tipos de vegetação, cada um com uma probabilidade específica de ignição.
+**Tipos de Terreno e vegetação:** O ambiente contém diferentes tipos de Terreno, cada um com uma probabilidade específica de vegetação e cada vegetação com sua possibilidade de ignição.
 
 **Extinção do fogo:** Agentes dinâmicos (bombeiros) se movem pelo ambiente e podem extinguir o fogo nas células dentro de seu alcance.
 
