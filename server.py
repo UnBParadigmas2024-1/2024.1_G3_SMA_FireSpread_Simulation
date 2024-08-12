@@ -3,6 +3,7 @@ from mesa.visualization.modules import CanvasGrid
 from mesa.visualization.UserParam import Slider
 from model import Modelo
 from agent import StaticAgent, DynamicAgent
+from mesa.visualization.UserParam import UserSettableParameter
 
 def agent_portrayal(agent):
     # Define the colors for static agents based on vegetation type
@@ -42,11 +43,18 @@ grid = CanvasGrid(agent_portrayal, 100, 100, 500, 500)
 grid_params = {
     "width": 100,
     "height": 100,
-    "density": Slider("Densidade", 0.5, 0.1, 1.0, 0.1),
-    "num_dynamic_agents": Slider("Número de Bombeiros", 500, 0, 500, 1)
+    "density": Slider("Densidade", 0.5, 0.1, 0.9, 0.1),
+    "num_dynamic_agents": Slider("Número de Bombeiros", 500, 0, 500, 1),
+    "terrain_type": UserSettableParameter('slider', 'Tipo de Terreno', 1, 1, 5, 1)
 }
 
 # Cria o servidor da simulação, vinculando o modelo e a grade de visualização
-server = ModularServer(Modelo, [grid], "Simulação de Grid com Agente semifixo", grid_params)
+server = ModularServer(Modelo, [grid], "Simulação de Grid com Agente semifixo", {
+    "width": 100,
+    "height": 100,
+    "density": Slider("Densidade", 0.5, 0.1, 0.9, 0.1),
+    "num_dynamic_agents": Slider("Número de Bombeiros", 500, 0, 500, 1),
+    "terrain_type": UserSettableParameter('slider', 'Tipo de Terreno', 1, 1, 5, 1)
+})
 server.port = 8080
 server.launch()
