@@ -30,7 +30,8 @@ class Modelo(Model):
         tipos_vegetacao = list(vegetation_distribution.keys())
         probabilidades = list(vegetation_distribution.values())
 
-        for (contents, x, y) in self.grid.coord_iter():
+        for (contents, (x, y)) in self.grid.coord_iter():
+
             if self.random.random() < density:
                 initial_fire = (y == 99)  # Incêndio inicial na última linha de y
                 tipo_vegetacao = random.choices(tipos_vegetacao, probabilidades)[0]
