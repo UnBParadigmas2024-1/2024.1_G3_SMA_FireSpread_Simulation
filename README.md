@@ -120,10 +120,10 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | -- | -- | -- |
 | Catlen Cleane Ferreira de Oliveira  |Programação dos tipos de matas e a probabilidade de ignição|Boa|
 | Gabriel da Silva Rosa  |  Programação dos tipos de matas e a probabilidade de ignição | Boa |
-| João Pedro Alves Machado  |  |  |
+| João Pedro Alves Machado  |Criação da logica do bombeiro e implementação do combate a progação do fogo  | Boa  |
 | Lorenzo Santos  | |  |
 | Paulo Victor Fonseca Sousa  |  |  |
-| Valderson Pontes da Silva Junior  |   |  |
+| Valderson Pontes da Silva Junior  |   Criação da logica do bombeiro e implementação do combate a progação do fogo  | Boa  |
 | Victor de Souza Cabral  | Simulação da propagação do fogo na floresta, iniciando o fogo em agentes específicos, lógica de dispersão do fogo, criando controle de densidade e probabilidade de ignição entre elementos adjacentes.  | Excelente |
 
 ## Outros
