@@ -23,6 +23,9 @@ class Modelo(Model):
             vegetation_distribution = {'grama': 0.8, 'arbusto': 0.1, 'árvore': 0.1, 'terreno_úmido': 0.0}
         elif terrain_type == 5:  # Distribuição aleatória (opção padrão)
             vegetation_distribution = {'grama': 0.25, 'arbusto': 0.25, 'árvore': 0.25, 'terreno_úmido': 0.25}
+        else:
+            # Valor padrão para vegetação caso o tipo de terreno não seja reconhecido
+            vegetation_distribution = {'grama': 0.25, 'arbusto': 0.25, 'árvore': 0.25, 'terreno_úmido': 0.25}
 
         tipos_vegetacao = list(vegetation_distribution.keys())
         probabilidades = list(vegetation_distribution.values())
