@@ -38,6 +38,7 @@ Funcionalidades principais:
 ![](assets/img1.jpg)
 ![](assets/img2.jpg)
 ![](assets/img3.jpg)
+![](assets/img4.jpg)
 
 ## Instalação 
 **Linguagens**: Python<br>
