@@ -45,7 +45,7 @@ grid_params = {
     "height": 100,
     "density": Slider("Densidade", 0.5, 0.1, 0.9, 0.1),
     "num_dynamic_agents": Slider("Número de Bombeiros", 500, 0, 500, 1),
-    "terrain_type": Slider('slider', 'Tipo de Terreno', 1, 1, 5, 1)
+    "terrain_type": Slider( 'Tipo de Terreno', 1, 1, 5, 1)
 }
 
 # Cria o servidor da simulação, vinculando o modelo e a grade de visualização
@@ -54,7 +54,7 @@ server = ModularServer(Modelo, [grid], "Simulação de Grid com Agente semifixo"
     "height": 100,
     "density": Slider("Densidade", 0.5, 0.1, 0.9, 0.1),
     "num_dynamic_agents": Slider("Número de Bombeiros", 500, 0, 500, 1),
-    "terrain_type": Slider('slider', 'Tipo de Terreno', 1, 1, 5, 1)
+    "terrain_type": Slider( 'Tipo de Terreno', 1, 1, 5, 1)
 })
 server.port = 8080
 server.launch()
