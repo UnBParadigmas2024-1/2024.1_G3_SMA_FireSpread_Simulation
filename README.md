@@ -110,9 +110,9 @@ GIF de utilização do projeto:
 ![](assets/animacao.gif)
 
 ## Vídeo
-[Vídeo de apresentação do Projeto - Fire Spread Simulation](link)
+[Vídeo de apresentação do Projeto - Fire Spread Simulation](https://github.com/UnBParadigmas2024-1/2024.1_G3_SMA_FireSpread_Simulation/blob/main/assets/video_sma.mp4)
 <br>
-[Video no YouTube](link)
+[Video no YouTube](https://www.youtube.com/watch?v=35XhNSYKeus)
 
 ## Participações
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
