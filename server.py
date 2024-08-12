@@ -3,7 +3,7 @@ from mesa.visualization.modules import CanvasGrid
 from mesa.visualization.UserParam import Slider
 from model import Modelo
 from agent import StaticAgent, DynamicAgent
-from mesa.visualization.UserParam import UserSettableParameter
+
 
 def agent_portrayal(agent):
     # Define the colors for static agents based on vegetation type
